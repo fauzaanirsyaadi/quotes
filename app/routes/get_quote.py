@@ -7,8 +7,8 @@ def get_quote():
 
     return jsonify([
         {
-            'quotes id': user.quotes_id, 
-			'quotes value': user.quotes_value
+            'quotes id': s.quotes_id, 
+			'quotes value': s.quotes_value
 
-            } for user in quotes.query.all()
+            } for s in quotes.query.all()
     ])

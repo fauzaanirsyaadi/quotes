@@ -17,6 +17,7 @@ def post_quote():
 	db.session.add(u)
 	db.session.commit()
 	return {
-        'quotes_id': u.quotes_id, 'quotes value': u.quotes_value
+        'quotes_id': u.quotes_id, 
+		'quotes value': u.quotes_value
     }, 201
  
