@@ -1,0 +1,1 @@
+get_quotes_id belum berhasil
