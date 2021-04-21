@@ -12,6 +12,12 @@ migrate = Migrate(app, db)
 
 #routes
 from app.routes import index
+from app.routes import delete_quote_id
+from app.routes import get_quote_id
+from app.routes import get_quote_of_the_day
+from app.routes import get_quote
+from app.routes import post_quote
+from app.routes import put_quote_id
 
 #models
 from .models.quotes import quotes
