@@ -2,8 +2,8 @@ from app import app
 from flask import jsonify
 from ..models.quotes import quotes
 
-@app.route('/get_quote/')
-def get_quote():
+@app.route('/get_quote_of_the_day/')
+def get_quote_of_the_day():
 
     return jsonify([
         {
