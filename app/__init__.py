@@ -10,14 +10,11 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-#routes
-from app.routes import index
-from app.routes import delete_quote_id
-from app.routes import get_quote_id
-from app.routes import get_quote_of_the_day
-from app.routes import get_quote
-from app.routes import post_quote
-from app.routes import put_quote_id
+from app.routes.quote_route import quote
+app.register_blueprint(quote, url_prefix='/quote')
 
 #models
-from .models.quotes import quotes
+from .models.quotes import Quotes
+
+if __name__=='__main__':
+  app.run(debug=True)
