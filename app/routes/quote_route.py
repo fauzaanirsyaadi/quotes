@@ -35,3 +35,37 @@ def update():
 @quote.route('/delete/<id>', methods=['DELETE'])
 def delete(id):
   return QuoteController.delete(id=id)
+
+###user###
+
+@quote.route('/signup', methods=['POST'])
+def signup():
+  data = request.get_json()
+  return QuoteController.signup(data=data)
+
+@quote.route('/login')
+def login():
+  return pass 
+
+@quote.route('/user/<id>', methods=['GET'])
+def user_by_id(id):
+  return QuoteController.user_by_id(id=id)
+
+
+@quote.route('/user/all', methods=['GET'])
+def user_all():
+  return QuoteController.user_all()
+
+
+
+
+@quote.route('/update_user', methods=['PUT'])
+def update_user():
+  data = request.get_json()
+  return QuoteController.update_user(data=data)
+
+
+@quote.route('/delete_user/<id>', methods=['DELETE'])
+def delete_user(id):
+  return QuoteController.delete_user(id=id)
+

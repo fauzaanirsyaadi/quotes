@@ -3,13 +3,13 @@ from flask import Flask
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-import flask_login
+# import flask_login
 
 app = Flask(__name__)
 app.config.from_object(Config)
 app.secret_key = 'super secret string' 
-login_manager = flask_login.LoginManager()
-login_manager.init_app(app)
+# login_manager = flask_login.LoginManager()
+# login_manager.init_app(app)
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
