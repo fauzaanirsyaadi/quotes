@@ -11,15 +11,19 @@ class UserController:
 
     return jsonify({
       'users_id': fetch_user.users_id,
-      'quotes_value': fetch_user.quotes_value
+      'users_name': fetch_user.users_name,
+      'users_email': fetch_user.users_email,
+      'users_password': fetch_user.users_password,
     }), 200
 
   @staticmethod
   def fetch_all():
     return jsonify([
       {
-        'users_id': fetch_user.users_id,
-        'quotes_value': fetch_user.quotes_value
+      'users_id': fetch_user.users_id,
+      'users_name': fetch_user.users_name,
+      'users_email': fetch_user.users_email,
+      'users_password': fetch_user.users_password,
       } for fetch_user in Users.query.all()
     ]), 200
 
