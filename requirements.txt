@@ -6,3 +6,4 @@ py-postgresql
 python-dotenv
 psycopg2
 Flask-UUID
+Flask-Login

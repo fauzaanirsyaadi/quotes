@@ -2,7 +2,9 @@ from flask import Blueprint, jsonify, request
 from ..models.user import Users
 from ..controller.user_controller import UserController
 
+
 quote = Blueprint('quote', __name__)
+
 
 @quote.route('/fetch/<id>', methods=['GET'])
 def fetch_by_id(id):
@@ -29,3 +31,7 @@ def update():
 @quote.route('/delete/<id>', methods=['DELETE'])
 def delete(id):
   return UserController.delete(id=id)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get(user_id)
