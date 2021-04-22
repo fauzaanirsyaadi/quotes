@@ -1,0 +1,12 @@
+CRUD quotes
+- GET /quote
+- POST /quote
+- GET /quote/:id
+- PUT /quote/:id
+- DELETE /quote/:id
+
+Quotes of the day
+- GET /qod
+
+- CRUD user: get /user, get /user/:id, post /user, put /user/:id, delete /user:id
+- /qod harus login, per user maksimal 20x per hari

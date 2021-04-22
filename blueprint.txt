@@ -1,9 +1,0 @@
-CRUD quotes
-- GET /quote
-- POST /quote
-- GET /quote/:id
-- PUT /quote/:id
-- DELETE /quote/:id
-
-Quotes of the day
-- GET /qod
