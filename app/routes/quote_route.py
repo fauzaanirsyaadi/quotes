@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from ..models.quotes import Quotes
 from ..controller.quote_controller import QuoteController
 
+
 quote = Blueprint('quote', __name__)
 
 @quote.route('/fetch/<id>', methods=['GET'])
