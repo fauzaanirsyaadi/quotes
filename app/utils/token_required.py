@@ -16,7 +16,7 @@ def token_required(f):
         return jsonify({'message': 'a valid token is missing'})
 
     try:
-        data = jwt.decode(token, os.environ.get("SECRET_KEY"), algorithms=["HS256"])
+        data = jwt.decode(token, str(os.environ.get("SECRET_KEY")), algorithms=["HS256"])
         current_user = Users.query.filter_by(users_id=data['users_id']).first()
     except jwt.ExpiredSignatureError:
         return jsonify({'message': 'token is invalid'})

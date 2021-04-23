@@ -35,7 +35,7 @@ class UserController:
             'users_id': user.users_id,
             'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=24 * 7)
           }, 
-          os.environ.get("SECRET_KEY"), 
+          str(os.environ.get("SECRET_KEY")), 
           algorithm="HS256"
         )
         return jsonify({
