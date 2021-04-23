@@ -1,4 +1,4 @@
-from flask import jsonify, request
+from flask import request, jsonify
 from ..models.user import Users
 from app import db
 import os
@@ -62,7 +62,7 @@ class UserController:
     return jsonify({
       'message': 'You have registered successfully',
       'users_name': user.users_name,
-      'users_email': user.users_email,
+      'users_email': user.users_email
     }), 200
 
 
@@ -71,7 +71,7 @@ class UserController:
     user = Users.query.filter_by(users_id=data['users_id']).first()
     if user:
       user.users_name = data['users_name'],
-      user.users_email = data['users_email'],
+      user.users_email = data['users_email']
       
     if 'users_password' in data:
       user.users_password = data['users_password']
@@ -82,7 +82,7 @@ class UserController:
       'message': 'data has been updated',
       'users_id': user.users_id,
       'users_name': user.users_name,
-      'users_email': user.users_email,
+      'users_email': user.users_email
     }), 200
 
 

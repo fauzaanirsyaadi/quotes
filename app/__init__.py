@@ -13,7 +13,7 @@ app.secret_key = 'super secret string'
 limiter = Limiter(
   app,
   key_func=get_remote_address,
-  default_limits=["200 per day", "50 per hour"]
+  default_limits=["20 per day"]
 )
 
 db = SQLAlchemy(app)

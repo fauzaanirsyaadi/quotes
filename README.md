@@ -21,6 +21,9 @@ beberapa cara activkan env (windows)
 sortcut installation syntac (in env):
 pip install -r requirements.txt 
 
+untuk auto membuat requitments.txt
+pip3 freeze 
+
 nonactive virtualenv 
 -deactivate
 -
