@@ -6,9 +6,24 @@ import os
 import jwt
 import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy import create_engine
+from sqlalchemy.sql import text
+
+connect_str = 'postgresql://postgres:admin@localhost:5432/quotes'
+engine = create_engine(connect_str, echo=False)
 
 class UserController:
-  
+
+  def get_users():
+    response = jsonify([
+        {
+            'user_id': raw.user_id, 
+            'users_name': raw.users_name, 
+            'users_email' : raw.users_email,
+            } for raw in Users.query.all()
+    ]) 
+    return response
+
   @staticmethod
   def fetch_by_id(id):
     user = Users()
@@ -20,6 +35,53 @@ class UserController:
       'users_email': fetch_user.users_email,
     }), 200
 
+  @staticmethod
+  def get_users_by_offset_limit():#pagination
+    offset = request.args.get("offset")
+    limit = request.args.get("limit")
+    
+    all = []
+    with engine.connect() as connection:
+        qry = text("SELECT * FROM users OFFSET {}  LIMIT {}".format(offset, limit))
+        result = connection.execute(qry)
+        for item in result:
+            all.append({
+                'user_id': item[0],
+                'users_name': item[1],
+                'users_email' : item[2]
+            })
+    return {'data': all, 'total': len(list(all))}
+
+  @staticmethod
+  def search_user(users_name):
+    all = []
+    with engine.connect() as connection:
+        qry = text("SELECT * FROM users WHERE users_name ILIKE'%{}%' ORDER BY name".format(users_name))
+        result = connection.execute(qry)
+        for item in result:
+            all.append({
+                'user_id': item[0],
+                'users_name': item[1],
+                'users_email' : item[2]
+            })
+    return jsonify(all)
+
+  @staticmethod
+  def sort_user_name():
+    offset = request.args.get("offset")
+    limit = request.args.get("limit")
+    
+    all = []
+    with engine.connect() as connection:
+        qry = text("SELECT * FROM users ORDER BY users_name OFFSET {} LIMIT {}".format(offset, limit))
+        result = connection.execute(qry)
+        for item in result:
+            all.append({
+                'user_id': item[0],
+                'users_name': item[1],
+                'users_email' : item[2]
+            })
+    return jsonify(all)
 
   @staticmethod
   def login(auth):
