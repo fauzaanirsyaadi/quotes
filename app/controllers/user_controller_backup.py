@@ -1,5 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
-from flask import jsonify, make_response
+from flask import request, jsonify
 from ..models.user import Users
 from app import db
 import os

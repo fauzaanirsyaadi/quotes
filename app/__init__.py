@@ -5,15 +5,18 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+from flask_cors import CORS
+
 
 app = Flask(__name__)
 app.config.from_object(Config)
 app.secret_key = 'super secret string' 
+CORS(app)
 
 limiter = Limiter(
   app,
   key_func=get_remote_address,
-  default_limits=["20 per day"]
+  default_limits=["200 per day", "50 per hour"]
 )
 
 db = SQLAlchemy(app)
